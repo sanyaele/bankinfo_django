@@ -1,0 +1,30 @@
+{% extends 'website/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+          <div class="row">
+
+            <div class="col-md-9 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-center">
+                    <a href="{% url 'bank_detail' pk=bank.pk %}">{{ bank.name }}</a>
+                  </h4>
+                  <p class="card-text">
+                      <small class="text-info">
+                          USSD: <strong class="text-danger">{{ bank.ussd }}</strong> <br />
+                          <i class="fa fa-user"></i> <strong class="text-muted">Rating <span class="text-dark">&#9733; &#9733; &#9733; &#9734; &#9734;</span></strong> <br />
+                          <i class="fa fa-university"></i> <strong class="text-muted">{{ bank.website }}</strong> <br />
+                          <i class="fa fa-phone"></i> <strong class="text-muted">{{ bank.phone_numbers }}</strong> <br />
+                          <i class="fa fa-envelope"></i> <strong class="text-muted">{{ bank.email_addresses }}</strong>
+                      </small>
+                    
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- /.row -->
+{% endblock %}
