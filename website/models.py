@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Bank(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
-    # synonyms = models.CharField(max_length=250, null=True, blank=True)
+    synonyms = models.CharField(max_length=250, null=True, blank=True)
     ussd = models.CharField(max_length=6, null=True, blank=True)
     website = models.CharField(max_length=100, null=True, blank=True)
     other_websites = models.CharField(max_length=250, null=True, blank=True)

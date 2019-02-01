@@ -17,6 +17,7 @@ router.register(r'bankbranches', views.BankBranchViewSet)
 urlpatterns = [
     re_path(r'^', include(router.urls)),
     path('bank/<bank_name>/', views.SearchBankView, name='bank_name'),
+    path('hi', views.sayHi ),
     # # ex: /banks/5/website/
     # path('banks/<int:bank_id>/website/', views.website, name='website'),
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

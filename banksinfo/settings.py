@@ -82,6 +82,16 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+DATABASES_bak = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bankinfo',
+        'USER': 'root',
+        'PASSWORD': 'tummy',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 # Password validation

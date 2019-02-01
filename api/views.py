@@ -3,6 +3,11 @@ from website.models import Bank, BankBranch
 from rest_framework import viewsets
 from .serializers import BankSerializer, BankBranchSerializer
 
+# from django.http import HttpRequest, HttpResponse
+# from django.views.decorators.csrf import csrf_exempt
+# import json
+
+from django.http import JsonResponse
 
 class BankViewSet(viewsets.ModelViewSet):
     """
@@ -10,14 +15,6 @@ class BankViewSet(viewsets.ModelViewSet):
     """
     queryset = Bank.objects.all().order_by('name')
     serializer_class = BankSerializer
-
-# class SearchBankViewSet(viewsets.ModelViewSet):
-#     # End point to search for a bank's information
-#     def get(self, request):
-#         bank = request.bank
-
-#     queryset = Bank.objects.get(name=bank)
-#     serializer_class = BankSerializer
 
 
 class BankBranchViewSet(viewsets.ModelViewSet):
@@ -36,3 +33,70 @@ def SearchBankView(request, bank_name):
     direct_uri = ('/api/banks/' + str(bankname.id))
     return redirect(direct_uri)
     # return redirect('banks', pk=bankname.pk)
+
+# Create your views here.
+# @csrf_exempt
+def sayHi(request):
+    # j = json.loads(request.body)
+    # x = {  "fulfillmentText": "Hey! How are you doing?"
+    #     }
+    # return HttpResponse(json.dumps(x))
+    # return HttpResponse('Works like a charm!')
+    return JsonResponse({"fulfillmentText": "Hey! How are you doing?"})
+
+    # Sample JSON RETURN
+    # {
+        # "fulfillmentText": "This is a text response",
+        # "fulfillmentMessages": [
+        # {
+        #     "card": {
+        #     "title": "card title",
+        #     "subtitle": "card text",
+        #     "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+        #     "buttons": [
+        #         {
+        #         "text": "button text",
+        #         "postback": "https://assistant.google.com/"
+        #         }
+        #     ]
+        #     }
+        # }
+        # ],
+        # "source": "example.com",
+        # "payload": {
+        # "google": {
+        #     "expectUserResponse": true,
+        #     "richResponse": {
+        #     "items": [
+        #         {
+        #         "simpleResponse": {
+        #             "textToSpeech": "this is a simple response"
+        #         }
+        #         }
+        #     ]
+        #     }
+        # },
+        # "facebook": {
+        #     "text": "Hello, Facebook!"
+        # },
+        # "slack": {
+        #     "text": "This is a text response for Slack."
+        # }
+        # },
+        # "outputContexts": [
+        # {
+        #     "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
+        #     "lifespanCount": 5,
+        #     "parameters": {
+        #     "param": "param value"
+        #     }
+        # }
+        # ],
+        # "followupEventInput": {
+        # "name": "event name",
+        # "languageCode": "en-US",
+        # "parameters": {
+        #     "param": "param value"
+        # }
+        # }
+    # }
